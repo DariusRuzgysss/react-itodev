@@ -1,10 +1,16 @@
 import './App.css';
-import Routers from './utils/routers';
+import Routers from './routes';
+import theme from './utils/theme';
+
+// Libraries
+import { ThemeProvider } from '@mui/material/styles';
 
 function App() {
   return (
     <>
-      <Routers />
+      <ThemeProvider theme={theme}>
+        <Routers />
+      </ThemeProvider>
     </>
   );
 }

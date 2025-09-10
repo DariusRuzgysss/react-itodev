@@ -1,17 +1,22 @@
 import * as React from 'react';
+import Header from '../header';
+import { ListItems } from '../../utils/constants';
+import useActiveLink from '../../hooks/useActiveLink';
+
+//Libraries
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
-export default function TemporaryDrawer() {
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+
+const TemporaryDrawer = () => {
+  const pathName = useActiveLink();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -19,29 +24,47 @@ export default function TemporaryDrawer() {
   };
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 200 }} onClick={toggleDrawer(false)}>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+        <ListItemButton component={Link} to="/">
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+        </ListItemButton>
 
+        {ListItems.map(({ title, icon, path }) => {
+          const Icon = icon;
+          return (
+            <ListItem key={title} disablePadding>
+              <ListItemButton component={Link} to={path}>
+                <ListItemIcon>
+                  <Icon />
+                </ListItemIcon>
+                <ListItemText
+                  primary={title}
+                  sx={{
+                    color:
+                      pathName === path
+                        ? 'primary.contrastText'
+                        : 'text.primary',
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
     </Box>
   );
 
   return (
-    <div>
-      <Button onClick={toggleDrawer(true)}>Open drawer</Button>
+    <Box>
+      <Header toggleDrawer={toggleDrawer} />
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
-    </div>
+    </Box>
   );
-}
+};
+
+export default TemporaryDrawer;

@@ -1,16 +1,16 @@
-import { Outlet } from 'react-router';
-import styled from 'styled-components';
 import { Drawer } from '../components';
+
+//Libraries
+import { Outlet } from 'react-router-dom';
+import { Box } from '@mui/material';
 
 const Layout = () => {
   return (
-    <LayoutContainer>
+    <Box>
       <Drawer />
       <Outlet />
-    </LayoutContainer>
+    </Box>
   );
 };
 
 export default Layout;
-
-const LayoutContainer = styled.div``;

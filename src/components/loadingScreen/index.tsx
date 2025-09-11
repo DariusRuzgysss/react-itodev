@@ -4,12 +4,12 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import type { LoadingScreenProps } from './types';
 
-export default function LoadingScreen({
+const LoadingScreen = ({
   text = 'Loading',
   fullscreen = false,
   size = 12,
   dotCount = 3,
-}: LoadingScreenProps) {
+}: LoadingScreenProps) => {
   const theme = useTheme();
 
   const dots = Array.from({ length: dotCount }).map((_, i) => ({
@@ -41,17 +41,6 @@ export default function LoadingScreen({
         gap={2}
         p={2}
       >
-        <motion.div
-          initial={{ y: -8, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          style={{ display: 'flex', alignItems: 'center', gap: 12 }}
-        >
-          <Typography variant="h6" color="textPrimary">
-            Star Wars
-          </Typography>
-        </motion.div>
-
         <Box display="flex" alignItems="center" gap={1}>
           {dots.map((d) => (
             <motion.div
@@ -85,4 +74,6 @@ export default function LoadingScreen({
       </Box>
     </Box>
   );
-}
+};
+
+export default LoadingScreen;

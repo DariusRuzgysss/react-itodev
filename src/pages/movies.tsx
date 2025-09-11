@@ -1,7 +1,4 @@
-import EmptyScreen from '../components/emptyScreen';
-import { MovieCard } from '../components';
-
-//Libraries
+import { EmptyScreen, MovieCard } from '../components';
 import Grid from '@mui/material/Grid';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { fetchMovies } from '../utils/helper';

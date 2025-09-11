@@ -1,18 +1,15 @@
 import { Suspense, lazy, type ElementType } from 'react';
-// components
 import LoadingScreen from '../components/loadingScreen';
+import ErrorBoundaryProvider from '../providers/errorBoundary';
 
-// ----------------------------------------------------------------------
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Loadable = (Component: ElementType) => (props: any) =>
+const Loadable = (Component: ElementType) => () =>
   (
-    <Suspense fallback={<LoadingScreen fullscreen />}>
-      <Component {...props} />
-    </Suspense>
+    <ErrorBoundaryProvider>
+      <Suspense fallback={<LoadingScreen fullscreen />}>
+        <Component />
+      </Suspense>
+    </ErrorBoundaryProvider>
   );
-
-// ----------------------------------------------------------------------
 
 export const HomePage = Loadable(lazy(() => import('../pages/home')));
 export const MoviesPage = Loadable(lazy(() => import('../pages/movies')));

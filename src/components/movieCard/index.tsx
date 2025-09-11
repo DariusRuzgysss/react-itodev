@@ -1,18 +1,9 @@
 import { Routes } from '../../utils/constants';
-
-//Libraries
 import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import type { MovieCardProps } from './types';
 
-const MovieCard = ({
-  title,
-  openingCrawl,
-  index,
-}: {
-  title: string;
-  openingCrawl: string;
-  index: number;
-}) => {
+const MovieCard = ({ title, openingCrawl, index }: MovieCardProps) => {
   const navigate = useNavigate();
 
   return (
@@ -31,7 +22,7 @@ const MovieCard = ({
         },
       }}
     >
-      <Box sx={{ p: 1, bgcolor: 'background.paper' }}>
+      <Box sx={{ p: 1 }}>
         <Typography variant="h5" color="black" noWrap>
           {title}
         </Typography>

@@ -21,7 +21,7 @@ const Card = ({ title, path }: CardProps) => {
           transform: 'scale(1.05)',
           boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
           bgcolor: 'secondary.dark',
-          color: 'primary.light',
+          color: 'white',
         },
       }}
     >

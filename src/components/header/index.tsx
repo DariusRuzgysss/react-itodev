@@ -1,6 +1,4 @@
 import type { HeaderProps } from './types';
-
-//Libraries
 import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Typography } from '@mui/material';

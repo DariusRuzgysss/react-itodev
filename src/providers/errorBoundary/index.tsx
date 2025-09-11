@@ -1,28 +1,21 @@
 import { QueryErrorResetBoundary } from '@tanstack/react-query';
 import { ErrorBoundary } from 'react-error-boundary';
-import Button from '@mui/material/Button';
-import type { ErrorBoundaryProviderProps } from './types';
+import type { PropsWithChildren } from 'react';
+import { ErrorFallback } from '../../components';
 
-const ErrorBoundaryProvider = ({
-  children,
-  fallback,
-}: ErrorBoundaryProviderProps) => {
+const ErrorBoundaryProvider = ({ children }: PropsWithChildren) => {
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
         <ErrorBoundary
           onReset={reset}
-          fallbackRender={
-            fallback ??
-            (({ resetErrorBoundary }) => (
-              <div className="flex flex-col items-center gap-4 p-4 text-center">
-                <p className="text-red-600 font-medium">There was an error!</p>
-                <Button variant="outlined" onClick={() => resetErrorBoundary()}>
-                  Try again
-                </Button>
-              </div>
-            ))
-          }
+          fallbackRender={({ resetErrorBoundary }) => (
+            <ErrorFallback
+              message="There was an error!"
+              buttonText="Try again"
+              onReset={() => resetErrorBoundary()}
+            />
+          )}
         >
           {children}
         </ErrorBoundary>

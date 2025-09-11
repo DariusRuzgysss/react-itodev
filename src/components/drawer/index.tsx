@@ -1,9 +1,7 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Header from '../header';
-import { ListItems } from '../../utils/constants';
+import { ListItems, Routes } from '../../utils/constants';
 import useActiveLink from '../../hooks/useActiveLink';
-
-//Libraries
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -17,7 +15,7 @@ import HomeIcon from '@mui/icons-material/Home';
 
 const TemporaryDrawer = () => {
   const pathName = useActiveLink();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -26,7 +24,7 @@ const TemporaryDrawer = () => {
   const DrawerList = (
     <Box sx={{ width: 200 }} onClick={toggleDrawer(false)}>
       <List>
-        <ListItemButton component={Link} to="/">
+        <ListItemButton component={Link} to={Routes.Home}>
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>

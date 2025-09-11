@@ -11,9 +11,9 @@ import Paper from '@mui/material/Paper';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Routes } from '../utils/constants';
-import EmptyScreen from '../components/emptyScreen';
-import SearchBar from '../components/searchBar';
+
 import { useState } from 'react';
+import { EmptyScreen, SearchBar } from '../components';
 
 const Characters = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Characters = () => {
     <Box p={4}>
       <SearchBar onSearch={onSearch} />
       <TableContainer component={Paper} style={{ marginTop: 20 }}>
-        <Table size="small" sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table size="small" aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell align="left" sx={{ fontWeight: 600 }}>
@@ -64,6 +64,10 @@ const Characters = () => {
                   cursor: 'pointer',
                   '&:last-child td, &:last-child th': {
                     border: 0,
+                  },
+                  '&:hover': {
+                    bgcolor: 'primary.light',
+                    transition: 'all 0.3s ease',
                   },
                 }}
               >

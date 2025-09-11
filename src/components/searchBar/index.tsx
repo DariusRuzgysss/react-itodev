@@ -1,49 +1,45 @@
 import { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField';
+import TextField, { type TextFieldProps } from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
-
-interface SearchBarProps {
-  placeholder?: string;
-  onSearch: (query: string) => void;
-  debounceTime?: number;
-}
+import type { SearchBarProps } from './types';
 
 const SearchBar = ({
   placeholder = 'Search...',
   onSearch,
   debounceTime = 1000,
-}: SearchBarProps) => {
-  const [query, setQuery] = useState<string>('');
+  ...textFieldProps
+}: SearchBarProps & TextFieldProps) => {
+  const [value, setValue] = useState<string>('');
 
   const handleSearch = () => {
-    onSearch(query.trim());
+    onSearch(value.trim());
   };
 
   const handleClear = () => {
-    setQuery('');
+    setValue('');
     onSearch('');
   };
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      onSearch(query.trim());
+      onSearch(value.trim());
     }, debounceTime);
 
     return () => {
       clearTimeout(handler);
     };
-  }, [query, debounceTime, onSearch]);
+  }, [value, debounceTime, onSearch]);
 
   return (
     <TextField
       fullWidth
       variant="outlined"
       placeholder={placeholder}
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
       onKeyDown={(e) => {
         if (e.key === 'Enter') {
           handleSearch();
@@ -53,7 +49,7 @@ const SearchBar = ({
         input: {
           endAdornment: (
             <InputAdornment position="end">
-              {query && (
+              {value && (
                 <IconButton onClick={handleClear} edge="end">
                   <ClearIcon />
                 </IconButton>
@@ -65,6 +61,7 @@ const SearchBar = ({
           ),
         },
       }}
+      {...textFieldProps}
     />
   );
 };

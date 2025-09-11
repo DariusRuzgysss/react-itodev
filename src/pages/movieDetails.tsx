@@ -1,9 +1,6 @@
-import EmptyScreen from '../components/emptyScreen';
 import { fetchMovieById } from '../utils/helper';
 import type { Movie } from '../utils/types';
 import LoadingScreen from '../components/loadingScreen';
-
-//Libraries
 import {
   Box,
   Typography,
@@ -17,6 +14,7 @@ import {
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { EmptyScreen } from '../components';
 
 const MovieDetailCard = () => {
   const { id } = useParams();
@@ -36,7 +34,7 @@ const MovieDetailCard = () => {
   }
 
   return (
-    <Box display="flex" justifyContent="center" p={3}>
+    <Box display="flex" justifyContent="center" p={4}>
       <Card sx={{ maxWidth: 800, width: '100%', boxShadow: 3 }}>
         <CardContent>
           {movie.title && (
@@ -76,22 +74,26 @@ const MovieDetailCard = () => {
 
           <Divider sx={{ my: 2 }} />
 
-          <Typography variant="h6" gutterBottom>
-            Characters
-          </Typography>
-          <List>
-            {movie?.characters?.map((char) => (
-              <ListItem key={char} disablePadding>
-                <ListItemText
-                  primary={
-                    <Link href={char} underline="hover">
-                      {char}
-                    </Link>
-                  }
-                />
-              </ListItem>
-            ))}
-          </List>
+          {movie?.characters?.length && (
+            <>
+              <Typography variant="h6" gutterBottom>
+                Characters
+              </Typography>
+              <List>
+                {movie.characters.map((char) => (
+                  <ListItem key={char} disablePadding>
+                    <ListItemText
+                      primary={
+                        <Link href={char} underline="hover">
+                          {char}
+                        </Link>
+                      }
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </>
+          )}
         </CardContent>
       </Card>
     </Box>

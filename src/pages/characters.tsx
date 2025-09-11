@@ -45,37 +45,61 @@ const Characters = () => {
   return (
     <Box p={4}>
       <SearchBar onSearch={onSearch} />
-      <TableContainer component={Paper} style={{ marginTop: 20 }}>
+      <TableContainer
+        aria-label="Character table"
+        component={Paper}
+        style={{ marginTop: 20 }}
+      >
         <Table size="small" aria-label="characters table">
           <TableHead>
             <TableRow>
-              <TableCell align="left" sx={{ fontWeight: 600 }}>
+              <TableCell
+                aria-label="Character row of number"
+                align="left"
+                sx={{ fontWeight: 600 }}
+              >
                 Number
               </TableCell>
-              <TableCell align="left" sx={{ fontWeight: 600 }}>
+              <TableCell
+                aria-label="Character row of name"
+                align="left"
+                sx={{ fontWeight: 600 }}
+              >
                 Name
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredData.map((row, index) => (
-              <TableRow
-                key={index}
-                onClick={() => navigate(Routes.CharacterDetails(index + 1))}
-                sx={{
-                  cursor: 'pointer',
-                  '&:hover': {
-                    bgcolor: 'primary.light',
-                    transition: 'all 0.3s ease',
-                  },
-                }}
-              >
-                <TableCell component="th" scope="row">
-                  {index + 1}
-                </TableCell>
-                <TableCell align="left">{row.name}</TableCell>
-              </TableRow>
-            ))}
+            {filteredData.map((row, index) => {
+              const rowNumber = index + 1;
+              return (
+                <TableRow
+                  key={index}
+                  onClick={() => navigate(Routes.CharacterDetails(index + 1))}
+                  sx={{
+                    cursor: 'pointer',
+                    '&:hover': {
+                      bgcolor: 'primary.light',
+                      transition: 'all 0.3s ease',
+                    },
+                  }}
+                >
+                  <TableCell
+                    aria-label={`Character number ${rowNumber}`}
+                    component="th"
+                    scope="row"
+                  >
+                    {rowNumber}
+                  </TableCell>
+                  <TableCell
+                    aria-label={`Character name is ${row.name}`}
+                    align="left"
+                  >
+                    {row.name}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
             <TableRow>
               {!filteredData.length ? (
                 <TableCell colSpan={12}>

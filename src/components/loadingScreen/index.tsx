@@ -68,7 +68,12 @@ const LoadingScreen = ({
           ))}
         </Box>
 
-        <Typography variant="body2" color="textSecondary" mt={1}>
+        <Typography
+          aria-label={text}
+          variant="body2"
+          color="textSecondary"
+          mt={1}
+        >
           {text}…
         </Typography>
       </Box>

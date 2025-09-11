@@ -24,7 +24,11 @@ const TemporaryDrawer = () => {
   const DrawerList = (
     <Box sx={{ width: 200 }} onClick={toggleDrawer(false)}>
       <List>
-        <ListItemButton component={Link} to={Routes.Home}>
+        <ListItemButton
+          aria-label="Home button"
+          component={Link}
+          to={Routes.Home}
+        >
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
@@ -33,8 +37,8 @@ const TemporaryDrawer = () => {
         {ListItems.map(({ title, icon, path }) => {
           const Icon = icon;
           return (
-            <ListItem key={title} disablePadding>
-              <ListItemButton component={Link} to={path}>
+            <ListItem key={path} disablePadding>
+              <ListItemButton aria-label={title} component={Link} to={path}>
                 <ListItemIcon>
                   <Icon />
                 </ListItemIcon>

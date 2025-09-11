@@ -19,7 +19,7 @@ const EmptyScreen = ({
     >
       {children}
       <DataExplorationIcon fontSize="large" />
-      <Typography variant="h6" color="text.secondary">
+      <Typography aria-label={message} variant="h6" color="text.secondary">
         {message}
       </Typography>
     </Box>

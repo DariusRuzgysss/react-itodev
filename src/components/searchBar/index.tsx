@@ -35,6 +35,7 @@ const SearchBar = ({
 
   return (
     <TextField
+      aria-label="Search bar input"
       fullWidth
       variant="outlined"
       placeholder={placeholder}
@@ -50,13 +51,17 @@ const SearchBar = ({
           endAdornment: (
             <InputAdornment position="end">
               {value && (
-                <IconButton onClick={handleClear} edge="end">
+                <IconButton
+                  aria-label="Clear button"
+                  onClick={handleClear}
+                  edge="end"
+                  style={{ marginRight: 15 }}
+                >
                   <ClearIcon />
                 </IconButton>
               )}
-              <IconButton edge="end">
-                <SearchIcon />
-              </IconButton>
+
+              <SearchIcon />
             </InputAdornment>
           ),
         },

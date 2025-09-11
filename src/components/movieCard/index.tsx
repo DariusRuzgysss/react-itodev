@@ -10,6 +10,7 @@ const MovieCard = ({ title, openingCrawl, index }: MovieCardProps) => {
 
   return (
     <Box
+      aria-label="Movie card"
       component="div"
       onClick={() => navigate(Routes.MovieDetails(index))}
       sx={{
@@ -25,10 +26,15 @@ const MovieCard = ({ title, openingCrawl, index }: MovieCardProps) => {
       }}
     >
       <Box sx={{ p: 1 }}>
-        <Typography variant="h5" color="black" noWrap>
+        <Typography aria-label={title} variant="h5" color="black" noWrap>
           {title}
         </Typography>
-        <Typography variant="subtitle1" color="black" noWrap>
+        <Typography
+          aria-label={openingCrawl}
+          variant="subtitle1"
+          color="black"
+          noWrap
+        >
           {openingCrawl}
         </Typography>
       </Box>

@@ -35,21 +35,38 @@ const MovieDetailCard = () => {
 
   return (
     <Box display="flex" justifyContent="center" p={4}>
-      <Card sx={{ maxWidth: 800, width: '100%', boxShadow: 3 }}>
+      <Card
+        aria-label="Movie card"
+        sx={{ maxWidth: 800, width: '100%', boxShadow: 3 }}
+      >
         <CardContent>
           {movie.title && (
-            <Typography variant="h4" gutterBottom>
+            <Typography
+              aria-label={`Movie title ${movie.title}`}
+              variant="h4"
+              gutterBottom
+            >
               {movie.title}
             </Typography>
           )}
-          <Typography variant="subtitle1" color="text.secondary">
-            Episode {movie.episode_id}
-          </Typography>
+          {movie?.episode_id && (
+            <Typography
+              aria-label={`Episode ${movie.episode_id}`}
+              variant="subtitle1"
+              color="text.secondary"
+            >
+              Episode {movie.episode_id}
+            </Typography>
+          )}
 
           <Divider sx={{ my: 2 }} />
 
           {movie.opening_crawl && (
-            <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
+            <Typography
+              aria-label={movie.opening_crawl}
+              variant="body1"
+              sx={{ whiteSpace: 'pre-line' }}
+            >
               {movie.opening_crawl}
             </Typography>
           )}
@@ -57,18 +74,27 @@ const MovieDetailCard = () => {
           <Divider sx={{ my: 2 }} />
 
           {movie.director && (
-            <Typography variant="body2">
-              <strong>Director:</strong> {movie.director}
+            <Typography
+              aria-label={`Director ${movie.director}`}
+              variant="body2"
+            >
+              Director: {movie.director}
             </Typography>
           )}
           {movie.producer && (
-            <Typography variant="body2">
-              <strong>Producer:</strong> {movie.producer}
+            <Typography
+              aria-label={`Producer ${movie.producer}`}
+              variant="body2"
+            >
+              Producer: {movie.producer}
             </Typography>
           )}
           {movie.release_date && (
-            <Typography variant="body2">
-              <strong>Release Date:</strong> {movie.release_date}
+            <Typography
+              aria-label={`Release Date ${movie.release_date}`}
+              variant="body2"
+            >
+              Release Date: {movie.release_date}
             </Typography>
           )}
 
@@ -76,13 +102,18 @@ const MovieDetailCard = () => {
 
           {movie?.characters?.length && (
             <>
-              <Typography variant="h6" gutterBottom>
+              <Typography
+                aria-label="Characters list"
+                variant="h6"
+                gutterBottom
+              >
                 Characters
               </Typography>
               <List>
-                {movie.characters.map((char) => (
+                {movie.characters.map((char, index) => (
                   <ListItem key={char} disablePadding>
                     <ListItemText
+                      aria-label={`Character link number ${index + 1}`}
                       primary={
                         <Link href={char} underline="hover">
                           {char}

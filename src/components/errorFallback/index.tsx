@@ -9,6 +9,7 @@ const ErrorFallback = ({
   return (
     <Box display="flex" flexDirection="column" justifyContent="center">
       <Typography
+        aria-label={message}
         sx={{
           bgcolor: 'error.main',
           p: 2,
@@ -17,7 +18,9 @@ const ErrorFallback = ({
       >
         {message}
       </Typography>
-      <Button onClick={onReset}>{buttonText}</Button>
+      <Button aria-label={buttonText} onClick={onReset}>
+        {buttonText}
+      </Button>
     </Box>
   );
 };

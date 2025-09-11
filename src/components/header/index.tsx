@@ -22,6 +22,7 @@ const Header = ({ toggleDrawer }: HeaderProps) => {
         size="large"
         style={{ marginRight: 20 }}
         onClick={toggleDrawer(true)}
+        aria-label="Open drawer"
       >
         <MenuIcon />
       </IconButton>

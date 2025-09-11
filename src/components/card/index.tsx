@@ -26,6 +26,7 @@ const Card = ({ title, path }: CardProps) => {
       }}
     >
       <Typography
+        aria-label="Card title"
         variant="body2"
         sx={{
           textAlign: 'center',

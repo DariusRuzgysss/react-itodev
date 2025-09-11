@@ -15,6 +15,8 @@ import { Routes } from '../utils/constants';
 import { useState } from 'react';
 import { EmptyScreen, SearchBar } from '../components';
 
+// characters dont return id of each record so i cant pass id to each character details instead of that i just pass an index but its not right
+// just want to show that it works but not correctly
 const Characters = () => {
   const navigate = useNavigate();
 
@@ -44,7 +46,7 @@ const Characters = () => {
     <Box p={4}>
       <SearchBar onSearch={onSearch} />
       <TableContainer component={Paper} style={{ marginTop: 20 }}>
-        <Table size="small" aria-label="simple table">
+        <Table size="small" aria-label="characters table">
           <TableHead>
             <TableRow>
               <TableCell align="left" sx={{ fontWeight: 600 }}>
@@ -62,9 +64,6 @@ const Characters = () => {
                 onClick={() => navigate(Routes.CharacterDetails(index + 1))}
                 sx={{
                   cursor: 'pointer',
-                  '&:last-child td, &:last-child th': {
-                    border: 0,
-                  },
                   '&:hover': {
                     bgcolor: 'primary.light',
                     transition: 'all 0.3s ease',

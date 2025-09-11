@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import type { EmptyScreenProps } from './types';
+import DataExplorationIcon from '@mui/icons-material/DataExploration';
 
 const EmptyScreen = ({
   message = 'Nothing here yet!',
@@ -17,6 +18,7 @@ const EmptyScreen = ({
       }}
     >
       {children}
+      <DataExplorationIcon fontSize="large" />
       <Typography variant="h6" color="text.secondary">
         {message}
       </Typography>

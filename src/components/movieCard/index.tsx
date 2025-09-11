@@ -3,6 +3,8 @@ import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import type { MovieCardProps } from './types';
 
+// movies dont return id of each record so i cant pass id to each character details instead of that i just pass an index but its not right
+// just want to show that it works but not correctly
 const MovieCard = ({ title, openingCrawl, index }: MovieCardProps) => {
   const navigate = useNavigate();
 

@@ -4,7 +4,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 
 export function useMovie(id: string | undefined) {
   return useSuspenseQuery<Movie>({
-    queryKey: ['movies', id],
+    queryKey: ['movie', id],
     queryFn: id ? () => fetchMovieById(id) : undefined,
   });
 }

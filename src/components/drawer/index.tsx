@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import Header from '../header';
-import { ListItems, Routes } from '../../utils/constants';
-import useActiveLink from '../../hooks/useActiveLink';
+import { ListItems, Routes } from '@/utils/constants';
+import useActiveLink from '@/hooks/useActiveLink';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -12,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import Header from '../header';
 
 const TemporaryDrawer = () => {
   const pathName = useActiveLink();

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { ErrorFallback } from '../components';
-import { Routes } from '../utils/constants';
+import { ErrorFallback } from '@/components';
+import { Routes } from '@/utils/constants';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();

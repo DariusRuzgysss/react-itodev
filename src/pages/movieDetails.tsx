@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { EmptyScreen } from '../components';
+import { EmptyScreen } from '@/components';
 
 const MovieDetailCard = () => {
   const { id } = useParams();

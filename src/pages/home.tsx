@@ -1,5 +1,5 @@
-import { ListItems } from '../utils/constants';
-import { Card } from '../components';
+import { ListItems } from '@/utils/constants';
+import { Card } from '@/components';
 import Grid from '@mui/material/Grid';
 
 const Home = () => {

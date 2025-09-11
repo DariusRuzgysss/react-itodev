@@ -1,4 +1,4 @@
-import { Drawer } from '../components';
+import { Drawer } from '@/components';
 import { Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
 

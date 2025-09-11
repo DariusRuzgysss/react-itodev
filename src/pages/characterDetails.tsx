@@ -11,10 +11,10 @@ import {
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCharacterById } from '../utils/helper';
-import type { Character } from '../utils/types';
-import LoadingScreen from '../components/loadingScreen';
-import { EmptyScreen } from '../components';
+import { fetchCharacterById } from '@/utils/helper';
+import type { Character } from '@/utils/types';
+import LoadingScreen from '@/components/loadingScreen';
+import { EmptyScreen } from '@/components';
 
 const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();

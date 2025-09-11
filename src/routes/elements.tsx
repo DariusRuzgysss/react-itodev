@@ -1,6 +1,6 @@
 import { Suspense, lazy, type ElementType } from 'react';
-import LoadingScreen from '../components/loadingScreen';
-import ErrorBoundaryProvider from '../providers/errorBoundary';
+import LoadingScreen from '@/components/loadingScreen';
+import ErrorBoundaryProvider from '@/providers/errorBoundary';
 
 const Loadable = (Component: ElementType) => () =>
   (

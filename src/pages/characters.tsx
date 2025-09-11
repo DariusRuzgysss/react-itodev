@@ -1,6 +1,6 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { fetchCharacters } from '../utils/helper';
-import type { Character } from '../utils/types';
+import { fetchCharacters } from '@/utils/helper';
+import type { Character } from '@/utils/types';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { Routes } from '../utils/constants';
+import { Routes } from '@/utils/constants';
 
 import { useState } from 'react';
 import { EmptyScreen, SearchBar } from '../components';

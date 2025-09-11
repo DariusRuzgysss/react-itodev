@@ -3,7 +3,7 @@ import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Typography } from '@mui/material';
 import { useMatches } from 'react-router-dom';
-import type { RouteHandle } from '../../routes/types';
+import type { RouteHandle } from '@/routes/types';
 
 const Header = ({ toggleDrawer }: HeaderProps) => {
   const matches = useMatches();

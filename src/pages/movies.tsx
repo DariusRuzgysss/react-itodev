@@ -1,8 +1,8 @@
 import { EmptyScreen, MovieCard } from '../components';
 import Grid from '@mui/material/Grid';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { fetchMovies } from '../utils/helper';
-import type { Movie } from '../utils/types';
+import { fetchMovies } from '@/utils/helper';
+import type { Movie } from '@/utils/types';
 
 const Movies = () => {
   const { data: movies } = useSuspenseQuery<Movie[]>({

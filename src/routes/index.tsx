@@ -1,4 +1,4 @@
-import { Routes } from '../utils/constants';
+import { Routes } from '@/utils/constants';
 import {
   CharacterDetailsPage,
   CharactersPage,
@@ -8,7 +8,7 @@ import {
   NotFoundPage,
 } from './elements';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from '../pages/layout';
+import Layout from '@/pages/layout';
 
 const router = createBrowserRouter([
   {

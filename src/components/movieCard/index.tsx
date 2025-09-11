@@ -1,4 +1,4 @@
-import { Routes } from '../../utils/constants';
+import { Routes } from '@/utils/constants';
 import { Box, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import type { MovieCardProps } from './types';

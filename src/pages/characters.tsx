@@ -1,6 +1,3 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { fetchCharacters } from '@/utils/helper';
-import type { Character } from '@/utils/types';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,16 +11,14 @@ import { Routes } from '@/utils/constants';
 
 import { useState } from 'react';
 import { EmptyScreen, SearchBar } from '../components';
+import { useCharacters } from '@/hooks/api/useCharacters';
 
 // characters dont return id of each record so i cant pass id to each character details instead of that i just pass an index but its not right
 // just want to show that it works but not correctly
 const Characters = () => {
   const navigate = useNavigate();
 
-  const { data: characters } = useSuspenseQuery<Character[]>({
-    queryKey: ['characters'],
-    queryFn: fetchCharacters,
-  });
+  const { data: characters } = useCharacters();
 
   const [filteredData, setFilteredData] = useState(characters);
 

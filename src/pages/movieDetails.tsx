@@ -1,6 +1,3 @@
-import { fetchMovieById } from '../utils/helper';
-import type { Movie } from '../utils/types';
-import LoadingScreen from '../components/loadingScreen';
 import {
   Box,
   Typography,
@@ -13,21 +10,12 @@ import {
   Link,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import { EmptyScreen } from '@/components';
+import { useMovie } from '@/hooks/api/useMovie';
 
 const MovieDetailCard = () => {
   const { id } = useParams();
-  const { data: movie, isPending } = useQuery<Movie>({
-    queryKey: ['characters', id],
-    queryFn: () => fetchMovieById(id!),
-    enabled: !!id,
-    staleTime: 0,
-  });
-
-  if (isPending) {
-    return <LoadingScreen fullscreen />;
-  }
+  const { data: movie } = useMovie(id);
 
   if (!movie) {
     return <EmptyScreen />;

@@ -10,24 +10,12 @@ import {
   Box,
 } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { fetchCharacterById } from '@/utils/helper';
-import type { Character } from '@/utils/types';
-import LoadingScreen from '@/components/loadingScreen';
 import { EmptyScreen } from '@/components';
+import { useCharacter } from '@/hooks/api/useCharacter';
 
 const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: character, isPending } = useQuery<Character>({
-    queryKey: ['characters', id],
-    queryFn: () => fetchCharacterById(id!),
-    enabled: !!id,
-    staleTime: 0,
-  });
-
-  if (isPending) {
-    return <LoadingScreen fullscreen />;
-  }
+  const { data: character } = useCharacter(id);
 
   if (!character) {
     return <EmptyScreen />;

@@ -1,14 +1,9 @@
 import { EmptyScreen, MovieCard } from '../components';
 import Grid from '@mui/material/Grid';
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { fetchMovies } from '@/utils/helper';
-import type { Movie } from '@/utils/types';
+import { useMovies } from '@/hooks/api/useMovies';
 
 const Movies = () => {
-  const { data: movies } = useSuspenseQuery<Movie[]>({
-    queryKey: ['movies'],
-    queryFn: fetchMovies,
-  });
+  const { data: movies } = useMovies();
 
   if (!movies.length) {
     return <EmptyScreen />;

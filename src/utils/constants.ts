@@ -9,7 +9,7 @@ export const Routes = {
   CharacterDetails: (id: number) => `${id}`,
 };
 
-export const ListItems = [
+export const NavigationLinks = [
   { title: 'Movies', icon: TheatersIcon, path: Routes.Movies },
   { title: 'Characters', icon: PeopleIcon, path: Routes.Characters },
 ];

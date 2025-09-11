@@ -4,11 +4,9 @@ import { ThemeProvider } from '@mui/material/styles';
 
 function App() {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Routers />
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <Routers />
+    </ThemeProvider>
   );
 }
 

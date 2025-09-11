@@ -1,7 +1,9 @@
 import type { Character, Movie } from './types';
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 export const fetchMovies = async (): Promise<Movie[]> => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/films`);
+  const res = await fetch(`${BASE_URL}/api/films`);
   if (!res.ok) {
     throw new Error('Failed to fetch movies');
   }
@@ -9,7 +11,7 @@ export const fetchMovies = async (): Promise<Movie[]> => {
 };
 
 export const fetchMovieById = async (id: string): Promise<Movie> => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/films/${id}`);
+  const res = await fetch(`${BASE_URL}/api/films/${id}`);
   if (!res.ok) {
     throw new Error('Failed to fetch movies');
   }
@@ -17,7 +19,7 @@ export const fetchMovieById = async (id: string): Promise<Movie> => {
 };
 
 export const fetchCharacters = async (): Promise<Character[]> => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/people`);
+  const res = await fetch(`${BASE_URL}/api/people`);
   if (!res.ok) {
     throw new Error('Failed to fetch people');
   }
@@ -25,7 +27,7 @@ export const fetchCharacters = async (): Promise<Character[]> => {
 };
 
 export const fetchCharacterById = async (id: string): Promise<Character> => {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/people/${id}`);
+  const res = await fetch(`${BASE_URL}/api/people/${id}`);
   if (!res.ok) {
     throw new Error('Failed to fetch people');
   }
